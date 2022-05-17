@@ -58,9 +58,9 @@ RUN docker-php-ext-install gd
 
 
 RUN apt-get update -yqq && \
-    apt-get install -y zlib1g-dev libicu-dev g++ && \
+  apt-get install -y zlib1g-dev libicu-dev g++ libzip-dev && \
     docker-php-ext-configure intl && \
-    docker-php-ext-install intl
+  docker-php-ext-install intl zip
 
 RUN docker-php-ext-install opcache
 COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
