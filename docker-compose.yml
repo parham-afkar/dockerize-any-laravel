@@ -26,15 +26,15 @@ services:
       - ./.data/logs-nginx/:/var/log/nginx
       - ./nginx/ssl/:/etc/nginx/ssl/
     ports:
-      - "${NGINX_CONTAINER_PORT_HTTP}:80"
-      - "${NGINX_CONTAINER_PORT_HTTPS}:443"
+      - "${NGINX_CONTAINER_PORT_HTTP"
+      - "${NGINX_CONTAINER_PORT_HTTPS}"
     environment:
       - APP_DOMAIN=${APP_DOMAIN}
       - NGINX_CONTAINER_PHP_UPSTREAM_NAME=${NGINX_PHP_UPSTREAM_CONTAINER_NAME}
       - NGINX_CONTAINER_PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_CONTAINER_PORT}
       - NGINX_CONTAINER_PROJECT_PATH=${NGINX_CONTAINER_PROJECT_PATH}
     depends_on:
-      - php-fpm
+      - composer
     networks:
       - shared
 
@@ -116,7 +116,7 @@ services:
     container_name: ${PREFIX}_${MAILDEV_CONTAINER_NAME}
     restart: always
     ports:
-      - "${MAILDEV_CONTAINER_HTTP_PORT}:80"
-      - "${MAILDEV_CONTAINER_SMTP_PORT}:25"
+      - "${MAILDEV_CONTAINER_HTTP_PORT}"
+      - "${MAILDEV_CONTAINER_SMTP_PORT}"
     networks:
       - shared
