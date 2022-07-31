@@ -44,9 +44,15 @@ RUN set -eux; \
     libpq-dev \
     libjpeg-dev \
     libpng-dev \
+    libzip-dev \
     libmcrypt-dev; \
     rm -rf /var/lib/apt/lists/*
 
+
+RUN apt-get install -y \
+    zip \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
 # Install additional PHP Packages and project Requirements
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install mysqli
